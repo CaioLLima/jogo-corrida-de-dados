@@ -12,9 +12,9 @@
                 bool jogoEmAndamento = true;
 
                 do
-                {
+                {   //Usuario
                     //Cabeçalho
-                    ExibirCabeçalho();
+                    ExibirCabeçalho("Usuario");
 
                     //Sorteio do lançamento do dado
                     int resultado = SorteioLançamentoDados();
@@ -22,8 +22,10 @@
                     //Exibição do lançamento
                     ExibirLançamento(resultado);
 
+                    //Atualiza posicao usuario
                     posicaoUsuario += resultado;
 
+                    //Verifica se usuario ganhou
                     if (posicaoUsuario >= LIMITELINHACHEGADA)
                     {
                         Console.WriteLine($"O jogador chegou a linha de chegada.");
@@ -32,11 +34,32 @@
                     }
                     else
                         Console.WriteLine($"O jogador está na posição: {posicaoUsuario} de {LIMITELINHACHEGADA}.");
+                        Console.ReadLine();
 
+                    //Computador
+                    //Cabeçalho
+                    ExibirCabeçalho("Computador");
 
+                    //Sorteio do lançamento do dado
+                    int resultadoComputador = SorteioLançamentoDados();
 
+                    //Exibição do lançamento
+                    ExibirLançamento(resultadoComputador);
 
-                    Console.ReadLine();
+                    //Atualiza posicao usuario
+                    posicaoComputador += resultadoComputador;
+
+                    //Verifica se usuario ganhou
+                    if (posicaoComputador >= LIMITELINHACHEGADA)
+                    {
+                        Console.WriteLine($"O computador chegou a linha de chegada.");
+                        jogoEmAndamento = false;
+                        Console.ReadLine();
+                    }
+                    else
+                        Console.WriteLine($"O computador está na posição: {posicaoComputador} de {LIMITELINHACHEGADA}.");
+                        Console.ReadLine();
+                   
                 } while (jogoEmAndamento);
 
                 //Verificar se quer executar novamente
@@ -46,11 +69,13 @@
             }
         }
 
-        static void ExibirCabeçalho()
+        static void ExibirCabeçalho(string nome)
         {
             Console.Clear();
             Console.WriteLine("----------------------------------");
             Console.WriteLine("Jogo dos Dados");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine($"Turno do {nome}");
             Console.WriteLine("----------------------------------");
 
             Console.Write("Pressione ENTER para lançar o dado...");
@@ -66,7 +91,7 @@
 
         static void ExibirLançamento(int resultado)
         {
-            Console.Clear();
+            
             Console.WriteLine("----------------------------------");
             Console.WriteLine($"O valor sorteado foi {resultado}");
             Console.WriteLine("----------------------------------");
