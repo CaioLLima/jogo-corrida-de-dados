@@ -50,10 +50,13 @@
 
                     //Atualiza posicao computador
                     posicaoComputador += resultadoComputador;
+
                     //Avanço Extra
                     posicaoComputador = AvançoExtra(posicaoComputador);
+
                     //Recuo
                     posicaoComputador = PenalidadeRecuar(posicaoComputador);
+
 
                     // Rodada extra
                     posicaoComputador = RodadaExtra("Computador", resultado, posicaoComputador, LIMITELINHACHEGADA);
